@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { Turnstile } from '@marsidev/react-turnstile'
 import './ContactForm.css'
 
 // ─── Web3Forms ───────────────────────────────────────────────
-// 1. Ve a https://web3forms.com
-// 2. Ingresa chernandez@1punto5c.com → recibirás un Access Key por email
-// 3. Reemplaza el valor de ACCESS_KEY aquí abajo
 const ACCESS_KEY = 'f5a4684b-f35a-411c-9156-ad723b4926f2'
+
+// ─── Cloudflare Turnstile (anti-spam) ────────────────────────
+const TURNSTILE_SITE_KEY = '0x4AAAAAADWO2eBUOOPa3J6h'
 
 const SERVICIOS_OPCIONES = [
   'Estudios de Impacto Ambiental (EIA / DIA)',
@@ -29,12 +30,14 @@ export default function ContactForm() {
   })
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [submitType, setSubmitType] = useState('')
+  const [cfToken, setCfToken] = useState('')
+  const turnstileRef = useRef(null)
 
   const handleChange = e => {
     setFields(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const isValid = fields.nombre && fields.correo && fields.empresa && fields.servicio
+  const isValid = fields.nombre && fields.correo && fields.empresa && fields.servicio && cfToken
 
   const handleSubmit = async (type) => {
     if (!isValid) return
@@ -56,6 +59,7 @@ export default function ContactForm() {
       servicio: fields.servicio,
       tipo_contacto: type === 'reunion' ? 'Reunión de Asesoría' : 'Contacto Comercial',
       botcheck: '',
+      'cf-turnstile-response': cfToken,
     }
 
     try {
@@ -68,11 +72,17 @@ export default function ContactForm() {
       if (data.success) {
         setStatus('success')
         setFields({ nombre: '', correo: '', empresa: '', servicio: '' })
+        setCfToken('')
+        turnstileRef.current?.reset()
       } else {
         setStatus('error')
+        setCfToken('')
+        turnstileRef.current?.reset()
       }
     } catch {
       setStatus('error')
+      setCfToken('')
+      turnstileRef.current?.reset()
     }
   }
 
@@ -158,6 +168,15 @@ export default function ContactForm() {
           <span className="cf-select-arrow">▾</span>
         </div>
       </div>
+
+      <Turnstile
+        ref={turnstileRef}
+        siteKey={TURNSTILE_SITE_KEY}
+        onSuccess={token => setCfToken(token)}
+        onError={() => setCfToken('')}
+        onExpire={() => setCfToken('')}
+        options={{ theme: 'dark', language: 'es' }}
+      />
 
       {status === 'error' && (
         <p className="cf-error-msg">
