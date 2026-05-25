@@ -1,0 +1,213 @@
+/* ─── CONTACT FORM ──────────────────────────────────── */
+.cf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.cf-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.cf-input,
+.cf-select {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 14px 16px;
+  color: var(--text);
+  font-family: var(--ff-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.cf-input::placeholder {
+  color: var(--text-dim);
+}
+
+.cf-input:focus,
+.cf-select:focus {
+  border-color: var(--gold-dim);
+  background: rgba(201,168,76,0.04);
+}
+
+/* Select wrapper (custom arrow) */
+.cf-select-wrap {
+  position: relative;
+}
+
+.cf-select {
+  cursor: pointer;
+  padding-right: 40px; /* room for arrow */
+}
+
+.cf-select option {
+  background: #111d14;
+  color: var(--text);
+}
+
+.cf-select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold-dim);
+  font-size: 13px;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─── ACTION BUTTONS ──────────────────────────────── */
+.cf-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.cf-btn-primary,
+.cf-btn-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 28px;
+  font-family: var(--ff-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease,
+              color 0.25s ease, box-shadow 0.25s ease, opacity 0.2s ease;
+  border: none;
+}
+
+.cf-btn-primary {
+  background: var(--gold);
+  color: var(--bg);
+  border: 1px solid var(--gold);
+}
+.cf-btn-primary:hover:not(:disabled) {
+  background: var(--gold-light);
+  box-shadow: 0 8px 32px rgba(201,168,76,0.25);
+}
+
+.cf-btn-outline {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+.cf-btn-outline:hover:not(:disabled) {
+  border-color: var(--text-muted);
+  color: var(--text);
+}
+
+.cf-btn-primary:disabled,
+.cf-btn-outline:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ─── SPINNER ─────────────────────────────────────── */
+.cf-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(0,0,0,0.3);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: cf-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes cf-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── DISCLAIMER ──────────────────────────────────── */
+.cf-disclaimer {
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* ─── ERROR ───────────────────────────────────────── */
+.cf-error-msg {
+  font-size: 12px;
+  color: #EE2C31;
+  padding: 12px 16px;
+  border: 1px solid rgba(238,44,49,0.3);
+  border-radius: 2px;
+  background: rgba(238,44,49,0.06);
+}
+
+/* ─── SUCCESS STATE ───────────────────────────────── */
+.cf-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 24px;
+  gap: 16px;
+}
+
+.cf-success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(74,173,111,0.12);
+  border: 1px solid rgba(74,173,111,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--green-hi);
+}
+
+.cf-success h3 {
+  font-family: var(--ff-display);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.cf-success p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 340px;
+}
+
+.cf-reset {
+  margin-top: 8px;
+  background: transparent;
+  border: none;
+  font-family: var(--ff-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.cf-reset:hover { color: var(--text-muted); }

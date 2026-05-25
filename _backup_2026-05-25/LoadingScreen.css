@@ -1,0 +1,170 @@
+/* ═══════════════════════════════════════════════════
+   LOADING SCREEN — animación de construcción del logo
+   Secuencia total: 2700ms → onComplete()
+   ═══════════════════════════════════════════════════ */
+
+/* ── Overlay ─────────────────────────────────────── */
+.ls-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Fade-out: comienza a los 2300ms, dura 400ms */
+  animation: ls-exit 400ms 2300ms ease forwards;
+}
+
+.ls-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 3.5vh, 36px);
+}
+
+/* ── SVG principal ───────────────────────────────── */
+.ls-svg {
+  /* ~60vw en móvil, máx 280px en desktop */
+  width: min(60vw, 280px);
+  height: auto;
+  overflow: visible; /* evita recorte en el dot-pop */
+}
+
+/* ═══════════════════════════════════════════════════
+   PATHS — estado base: solo stroke, sin fill
+   stroke-dasharray >> longitud real → path invisible
+   ═══════════════════════════════════════════════════ */
+.ls-path {
+  fill: transparent;
+  stroke: var(--logo-color, #ffffff);
+  /* non-scaling-stroke: el grosor no se ve afectado por
+     el transform="scale(9.65957)" del elemento SVG */
+  vector-effect: non-scaling-stroke;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 5000;
+  stroke-dashoffset: 5000;
+}
+
+/* ═══════════════════════════════════════════════════
+   KEYFRAMES
+   ═══════════════════════════════════════════════════ */
+
+/* Traza el contorno del path de inicio a fin */
+@keyframes ls-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Rellena la forma y desvanece el stroke */
+@keyframes ls-fill-white {
+  from {
+    fill: transparent;
+    stroke-opacity: 1;
+    stroke-dashoffset: 0;
+  }
+  to {
+    fill: var(--logo-color, #ffffff);
+    stroke-opacity: 0;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Pop del punto rojo con resorte (cubic-bezier con y > 1 = overshoot) */
+@keyframes ls-dot-pop {
+  0%  { opacity: 0; transform: scale(0); }
+  12% { opacity: 1; }
+  100%{ opacity: 1; transform: scale(1); }
+}
+
+/* Fade-out del overlay completo */
+@keyframes ls-exit {
+  to { opacity: 0; pointer-events: none; }
+}
+
+/* ═══════════════════════════════════════════════════
+   SECUENCIA DE TRAZADO
+   Cada clase combina dos animaciones sin conflicto:
+   - ls-draw    → stroke-dashoffset (0 → longitud)
+   - ls-fill-white → fill + stroke-opacity (a 1400ms)
+   ═══════════════════════════════════════════════════ */
+
+/* 1. Letra I — 0ms */
+.ls-i {
+  animation:
+    ls-draw       380ms    0ms ease-in-out forwards,
+    ls-fill-white 280ms 1400ms ease         forwards;
+}
+
+/* 2. Letra B — 280ms */
+.ls-b {
+  animation:
+    ls-draw       420ms  280ms ease-in-out forwards,
+    ls-fill-white 280ms 1400ms ease         forwards;
+}
+
+/* 3. Letra C — 560ms */
+.ls-c {
+  animation:
+    ls-draw       360ms  560ms ease-in-out forwards,
+    ls-fill-white 280ms 1400ms ease         forwards;
+}
+
+/* 4. Símbolo ° (anillo pequeño) — 840ms
+   stroke-dasharray reducido para coincidir con la
+   longitud real del anillo (~750px en viewport) */
+.ls-ring {
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+  animation:
+    ls-draw       320ms  840ms ease-in-out forwards,
+    ls-fill-white 280ms 1400ms ease         forwards;
+}
+
+/* 5. Punto rojo — 1200ms
+   El <g> recibe el pop; el fill se declara en la clase */
+.ls-dot-group {
+  fill: #EE2C31;
+  opacity: 0;
+  transform-box: fill-box;        /* origin relativo al bbox del grupo */
+  transform-origin: center;
+  animation: ls-dot-pop 420ms 1200ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ═══════════════════════════════════════════════════
+   BARRA DE PROGRESO
+   Avanza linealmente en sincronía con toda la animación
+   ═══════════════════════════════════════════════════ */
+.ls-progress-track {
+  width: min(60vw, 280px);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.ls-progress-bar {
+  height: 100%;
+  background: var(--logo-color, #ffffff);
+  transform-origin: left center;
+  transform: scaleX(0);
+  /* 2000ms cubre las fases de dibujo + fill-in */
+  animation: ls-progress 2000ms 0ms linear forwards;
+}
+
+@keyframes ls-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — mobile first
+   ═══════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .ls-svg,
+  .ls-progress-track {
+    /* En móvil el logo ocupa el 65% del ancho */
+    width: min(65vw, 240px);
+  }
+}
