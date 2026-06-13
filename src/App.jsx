@@ -6,54 +6,50 @@ import GlobalBlobs from './components/GlobalBlobs'
 import ContactForm from './components/ContactForm'
 
 /* ─── Datos ──────────────────────────────────────── */
-const SERVICIOS = [
+const CATEGORIAS = [
   {
     num: '01',
-    title: 'Estudios de Impacto Ambiental',
-    plain: 'El estudio que el Estado exige para que tu proyecto pueda comenzar',
-    desc: 'Elaboramos y tramitamos la DIA o EIA ante el SEIA. Nos encargamos de todo el proceso con la profundidad técnica que cada organismo exige, sin que tengas que aprender el lenguaje regulatorio.',
+    title: 'Evaluación Ambiental',
+    desc: 'Te guiamos para que tu evaluación ambiental no se frene por falta de antecedentes o errores evitables. Revisamos tu planificación, definimos la ruta técnica y coordinamos con los especialistas correctos.',
+    ambitos: [
+      'Estudios de Impacto Ambiental (EIA / DIA)',
+      'Evaluaciones Ambientales Estratégicas (EAE)',
+      'Consultas de pertinencia de ingreso al SEIA',
+    ],
+    icon: 'compass',
   },
   {
     num: '02',
-    title: 'Permisos Ambientales y Sectoriales',
-    plain: 'Los permisos específicos que piden organismos como el SAG, DGA o SEREMI',
-    desc: 'Tramitamos todos los PAS y permisos sectoriales. Hacemos las consultas de pertinencia para que sepas exactamente qué necesitas antes de comprometer tiempo y recursos.',
+    title: 'Permisos y Cumplimiento',
+    desc: 'Coordinamos tu ruta de permisos y vigilamos tus compromisos para que no haya sorpresas desde la SMA. Te decimos exactamente qué necesitas antes de comprometer tiempo y recursos.',
+    ambitos: [
+      'Permisos Ambientales Sectoriales (PAS)',
+      'Monitoreo y seguimiento de RCA',
+      'Gestión ante organismos (SAG, DGA, SEREMI)',
+    ],
+    icon: 'shield',
   },
   {
     num: '03',
-    title: 'Sistemas de Gestión Ambiental',
-    plain: 'El orden interno que evita multas y facilita la operación diaria',
-    desc: 'Diseñamos e implementamos el SGA de tu empresa: políticas, procedimientos y registros para que el cumplimiento ambiental sea parte natural de cómo operan, no una carga adicional.',
+    title: 'Gestión Estratégica',
+    desc: 'Armamos tu estrategia ambiental integral — desde el orden interno de tu empresa hasta la relación con las comunidades. Para que lo ambiental deje de ser un problema y se convierta en ventaja.',
+    ambitos: [
+      'Sistemas de Gestión Ambiental (SGA)',
+      'Auditorías y Due Diligence Ambiental',
+      'Participación Ciudadana (PAC)',
+    ],
+    icon: 'strategy',
   },
   {
     num: '04',
-    title: 'Monitoreo y Seguimiento RCA',
-    plain: 'Cuidamos que se cumplan los compromisos que el Estado te aprobó',
-    desc: 'Gestionamos tus compromisos en la plataforma SMA y hacemos seguimiento continuo de las condiciones de tu RCA. Sin que te lleguen sorpresas desde la Superintendencia del Medio Ambiente.',
-  },
-  {
-    num: '05',
-    title: 'Auditorías y Due Diligence',
-    plain: 'Revisamos el estado ambiental antes de comprar, vender o fusionar',
-    desc: 'Evaluamos el riesgo ambiental de operaciones existentes. Ideal para procesos de fusión, adquisición o cuando necesitas saber exactamente en qué situación está un proyecto antes de invertir.',
-  },
-  {
-    num: '06',
-    title: 'Recursos Hídricos e Hidrología',
-    plain: 'Todo lo relacionado con el agua: ríos, napas subterráneas y derechos',
-    desc: 'Elaboramos estudios hidrogeológicos e hidrológicos y gestionamos derechos de agua. Una variable que muchos proyectos subestiman y que puede paralizar la tramitación por completo.',
-  },
-  {
-    num: '07',
-    title: 'Participación Ciudadana',
-    plain: 'Construimos confianza con las comunidades desde el primer día',
-    desc: 'Diseñamos e implementamos la estrategia de relacionamiento comunitario. Un PAC mal gestionado obliga a rediseñar el proyecto desde cero. Nosotros lo prevenimos.',
-  },
-  {
-    num: '08',
-    title: 'Evaluaciones Ambientales Estratégicas',
-    plain: 'El análisis ambiental que necesitan planes y políticas completas',
-    desc: 'Elaboramos EAE para planes y programas que requieren evaluar efectos ambientales de largo plazo. Un paso que muchas organizaciones omiten y que puede frenar todo lo que viene después.',
+    title: 'Recursos Hídricos',
+    desc: 'Evaluamos y gestionamos la variable hídrica antes de que paralice tu tramitación. Una variable que muchos proyectos subestiman y que puede detener todo el proceso.',
+    ambitos: [
+      'Estudios hidrogeológicos e hidrológicos',
+      'Gestión de derechos de agua',
+      'Análisis de disponibilidad hídrica',
+    ],
+    icon: 'water',
   },
 ]
 
@@ -83,23 +79,23 @@ const PILLARS = [
 const PASOS = [
   {
     num: '01',
-    title: 'Miramos el proyecto contigo',
-    desc: 'Evaluamos juntos la viabilidad antes de que inviertas en documentación. Identificamos los riesgos reales, las rutas posibles y lo que conviene hacer primero.',
+    title: 'Entendemos tu proyecto',
+    desc: 'Nos sentamos contigo a revisar dónde estás, qué necesitas y cuáles son los riesgos que no estás viendo. Te damos una hoja de ruta clara antes de que inviertas un peso en documentación.',
   },
   {
     num: '02',
-    title: 'Preparamos todo, bien',
-    desc: 'Elaboramos estudios y permisos con la profundidad que exigen el SEIA y los organismos sectoriales. Sin que te sorprenda nada a mitad del proceso.',
+    title: 'Armamos tu estrategia',
+    desc: 'Definimos la ruta de permisos, los estudios necesarios y coordinamos con los especialistas correctos. Tú te enfocas en tu proyecto, nosotros en que avance.',
   },
   {
     num: '03',
-    title: 'Estamos en terreno contigo',
-    desc: 'Durante la construcción supervisamos que los compromisos se cumplan. Si algo cambia, reaccionamos antes de que se convierta en una infracción o una paralización.',
+    title: 'Acompañamos la ejecución',
+    desc: 'Durante la construcción, nos aseguramos de que los compromisos ambientales se cumplan. Si algo cambia, reaccionamos antes de que se convierta en un problema.',
   },
   {
     num: '04',
-    title: 'Te acompañamos en operación',
-    desc: 'Una vez que el proyecto funciona, seguimos. Monitoreamos tus compromisos para que la operación nunca esté en riesgo regulatorio.',
+    title: 'Cuidamos tu operación',
+    desc: 'Una vez que el proyecto funciona, seguimos contigo. Monitoreamos tus compromisos para que la operación nunca esté en riesgo regulatorio.',
   },
 ]
 
@@ -146,8 +142,20 @@ const FACTORES_SEIA = [
 ]
 
 const EQUIPO = [
-  { nombre: 'Carolina Hernández', iniciales: 'CH', email: 'chernandez@1punto5.com' },
-  { nombre: 'Kurt Seiltgens',     iniciales: 'KS', email: 'kseiltgens@1punto5.com' },
+  {
+    nombre: 'Carolina Hernández Gamboa',
+    iniciales: 'CH',
+    titulo: 'Gestión Ambiental y Legal',
+    desc: 'Especialista en gestión de permisos ambientales y planificación de gestión legal ambiental.',
+    email: 'chernandez@1punto5.com',
+  },
+  {
+    nombre: 'Kurt Seiltgens López',
+    iniciales: 'KS',
+    titulo: 'Constructor Civil',
+    desc: 'Especialista en gestión de proyectos mineros y ambientales con más de 20 años de experiencia en terreno.',
+    email: 'kseiltgens@1punto5.com',
+  },
 ]
 
 /* ─── Hook: IntersectionObserver ─────────────────── */
@@ -262,7 +270,7 @@ export default function App() {
         <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
           <a className="nav-logo" href="#">1.5 <span>Consultores</span></a>
           <div className="nav-links">
-            <a href="#servicios">Servicios</a>
+            <a href="#servicios">Asesoría</a>
             <a href="#equipo"   >Equipo</a>
             <a href="#proceso"  >Proceso</a>
             <a href="#contacto" className="nav-cta">Contacto</a>
@@ -274,21 +282,21 @@ export default function App() {
           <HeroCanvas />
           <div className="hero-bg-number" ref={heroNumRef}>1.5</div>
           <div className="hero-content">
-            <div className="hero-eyebrow">Consultoría Ambiental Estratégica · Chile</div>
+            <div className="hero-eyebrow">Socios Estratégicos en Gestión Ambiental · Chile</div>
             <h1>
-              Viabilidad<br/>
-              <em>ambiental</em> para<br/>
-              proyectos que<br/>trascienden.
+              Tu equipo<br/>
+              <em>externo</em> en<br/>
+              gestión<br/>ambiental.
             </h1>
             <p className="hero-desc">
-              Somos el puente entre tu equipo técnico, legal y financiero.
-              Con más de 20 años en infraestructura, minería y energía,
-              integramos todo desde el inicio para que tu proyecto avance
-              sin sorpresas, sin reprocesos y dentro del presupuesto.
+              No hacemos los informes — hacemos que tu proyecto no pierda
+              tiempo ni dinero. Coordinamos con los especialistas correctos,
+              anticipamos los problemas y te damos la ruta para que todo
+              avance sin sorpresas.
             </p>
             <div className="hero-actions">
               <a href="#servicios" className="btn-primary">
-                Ver servicios <IconArrow />
+                Ver cómo te ayudamos <IconArrow />
               </a>
               <a href="#contacto" className="btn-ghost">
                 <IconClock /> Conversemos
@@ -352,48 +360,44 @@ export default function App() {
         {/* ── Por qué se frenan los proyectos ──────── */}
         <section className="seia-section" id="seia">
           <div className="section-inner">
-            <div className="seia-layout">
-              <div className="seia-intro">
-                <div className="section-label">Datos del SEA</div>
-                <h2 className="section-h2">
-                  Los mismos<br />problemas<br /><em>una y otra vez.</em>
-                </h2>
-                <p>
-                  No son sorpresas. Son fallas que ocurren cuando la gestión
-                  ambiental llega tarde al proyecto. Los datos del Sistema de
-                  Evaluación de Impacto Ambiental muestran exactamente dónde
-                  se detienen los proyectos — y por qué.
-                </p>
-                <div className="seia-callout">
-                  Nosotros integramos estas variables desde el día uno,
-                  antes de que se conviertan en tu problema.
-                </div>
-              </div>
-              <AccordionSEIA items={FACTORES_SEIA} />
+            <div className="seia-cascada-header">
+              <div className="section-label">Datos del SEA</div>
+              <h2 className="section-h2">
+                ¿Por qué <em>6 de cada 10</em><br />proyectos se frenan<br />en el SEIA?
+              </h2>
+              <p className="seia-cascada-subtitle">
+                No son sorpresas. Son fallas que se repiten cuando la gestión
+                ambiental llega tarde al proyecto. Estos son los datos reales.
+              </p>
+            </div>
+            <CascadaImpacto items={FACTORES_SEIA} />
+            <div className="seia-callout-bottom">
+              Nosotros intervenimos antes de que cualquiera de estas
+              variables frene tu inversión.
             </div>
           </div>
         </section>
 
         <Divider />
 
-        {/* ── Servicios ─────────────────────────────── */}
+        {/* ── Servicios / Asesoría ────────────────────── */}
         <section className="servicios-section" id="servicios">
           <div className="section-inner">
             <div className="servicios-layout">
               <div className="servicios-intro">
-                <div className="section-label">Ámbitos de acción</div>
+                <div className="section-label">Nuestros ámbitos de asesoría</div>
                 <h2 className="section-h2">
-                  Lo que<br /><em>hacemos</em>
+                  ¿En qué te<br />podemos<br /><em>orientar</em>?
                 </h2>
                 <p>
-                  Cubrimos el ciclo completo de gestión ambiental — desde la
-                  prefactibilidad hasta la operación y cierre — con acompañamiento
-                  técnico senior en cada fase. Dentro y fuera del SEIA.
+                  Somos tu equipo externo. Revisamos tu planificación, te damos
+                  la ruta y coordinamos con los especialistas que tu proyecto
+                  necesita — para que no pierdas tiempo ni dinero.
                 </p>
               </div>
-              <div className="servicios-grid">
-                {SERVICIOS.map((s, i) => (
-                  <ServicioCardReveal key={s.num} {...s} delay={i * 0.05} />
+              <div className="categorias-grid">
+                {CATEGORIAS.map((c, i) => (
+                  <CategoriaCardReveal key={c.num} {...c} delay={i * 0.08} />
                 ))}
               </div>
             </div>
@@ -450,9 +454,9 @@ export default function App() {
                 Más de 20 años de<br /><em>experiencia</em> aplicada
               </h2>
               <p>
-                Combinamos trayectoria en evaluación ambiental, tramitación de permisos,
-                ingeniería de proyectos y gestión de obras en terreno. No solo sabemos
-                cómo funciona el sistema — sabemos cómo se construye.
+                Combinamos trayectoria en evaluación ambiental, gestión de permisos,
+                ingeniería de proyectos y gestión de obras en terreno. Somos tu equipo
+                externo — el que coordina con los especialistas que tu proyecto necesita.
               </p>
             </div>
             <div className="equipo-cards">
@@ -474,14 +478,14 @@ export default function App() {
         <section className="proceso-section" id="proceso">
           <div className="section-inner">
             <div className="proceso-header">
-              <div className="section-label" style={{ justifyContent: 'center' }}>Así trabajamos juntos</div>
+              <div className="section-label" style={{ justifyContent: 'center' }}>Tu camino con nosotros</div>
               <h2 className="section-h2">
-                Tu camino,<br /><em>paso a paso</em>
+                Te acompañamos<br />en <em>cada etapa</em>
               </h2>
               <p>
                 Desde el primer análisis hasta que el proyecto está en operación,
-                estamos contigo en cada decisión. Sin que tengas que aprender
-                el lenguaje del SEIA para entender qué está pasando.
+                estamos contigo en cada decisión. Tú te enfocas en tu proyecto,
+                nosotros en que avance.
               </p>
             </div>
             <div className="proceso-steps">
@@ -518,12 +522,12 @@ export default function App() {
                     ))}
                   </ul>
                   <a
-                    href="https://wa.me/56900000000?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20de%20consultor%C3%ADa%20ambiental."
+                    href="https://wa.me/56900000000?text=Hola%2C%20me%20interesa%20una%20asesor%C3%ADa%20para%20mi%20proyecto.%20%C2%BFPueden%20orientarme%3F"
                     className="btn-outline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <IconWhatsApp /> Cotiza con Nosotros
+                    <IconWhatsApp /> Escríbenos por WhatsApp
                   </a>
                 </div>
               </div>
@@ -548,7 +552,7 @@ export default function App() {
 
         {/* ── Botón flotante WhatsApp ───────────────── */}
         <a
-          href="https://wa.me/56900000000?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios."
+          href="https://wa.me/56900000000?text=Hola%2C%20me%20interesa%20una%20asesor%C3%ADa%20para%20mi%20proyecto.%20%C2%BFPueden%20orientarme%3F"
           className="wsp-float"
           target="_blank"
           rel="noopener noreferrer"
@@ -562,7 +566,7 @@ export default function App() {
           <div className="footer-logo">1.5 <span>Consultores</span></div>
           <div className="footer-copy">© 2026 1.5 Consultores — Consultoría Ambiental Estratégica · Chile</div>
           <div className="footer-links">
-            <a href="#servicios">Servicios</a>
+            <a href="#servicios">Asesoría</a>
             <a href="#equipo"   >Equipo</a>
             <a href="#contacto" >Contacto</a>
           </div>
@@ -588,14 +592,43 @@ function IntroCellReveal({ icon, title, desc, delay }) {
   )
 }
 
-function ServicioCardReveal({ num, title, plain, desc, delay }) {
+function CategoriaCardReveal({ num, title, desc, ambitos, icon, delay }) {
   const [ref, visible] = useRevealHook()
+  const [expanded, setExpanded] = useState(false)
+
+  const ICONS = {
+    compass: <svg style={{width:32,height:32}} viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.2"><circle cx="16" cy="16" r="12"/><path d="M20 12l-6 2-2 6 6-2z"/></svg>,
+    shield: <svg style={{width:32,height:32}} viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M16 3l11 5v8c0 6.5-4.8 11.3-11 13-6.2-1.7-11-6.5-11-13V8l11-5z"/><path d="M11 16l3.5 3.5 6.5-6.5"/></svg>,
+    strategy: <svg style={{width:32,height:32}} viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="4" y="4" width="10" height="10" rx="2"/><rect x="18" y="4" width="10" height="10" rx="2"/><rect x="4" y="18" width="10" height="10" rx="2"/><rect x="18" y="18" width="10" height="10" rx="2"/><path d="M14 9h4M9 14v4M23 14v4M14 23h4"/></svg>,
+    water: <svg style={{width:32,height:32}} viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M16 4c-4 6-8 10-8 15a8 8 0 0 0 16 0c0-5-4-9-8-15z"/><path d="M12 22a4 4 0 0 0 4 4"/></svg>,
+  }
+
   return (
-    <div ref={ref} className={`servicio-card ${visible ? 'visible' : ''}`} style={{ transitionDelay: `${delay}s` }}>
-      <div className="servicio-num">{num}</div>
-      <h3>{title}</h3>
-      <div className="servicio-plain">{plain}</div>
-      <p>{desc}</p>
+    <div ref={ref} className={`categoria-card ${visible ? 'visible' : ''} ${expanded ? 'expanded' : ''}`} style={{ transitionDelay: `${delay}s` }}>
+      <div className="categoria-header" onClick={() => setExpanded(!expanded)}>
+        <div className="categoria-icon">{ICONS[icon]}</div>
+        <div className="categoria-title-group">
+          <div className="categoria-num">{num}</div>
+          <h3>{title}</h3>
+        </div>
+        <span className={`categoria-chevron ${expanded ? 'open' : ''}`}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M4 6l4 4 4-4"/>
+          </svg>
+        </span>
+      </div>
+      <p className="categoria-desc">{desc}</p>
+      <div className="categoria-ambitos" style={{ maxHeight: expanded ? '200px' : '0' }}>
+        <div className="categoria-ambitos-inner">
+          <div className="categoria-ambitos-label">Ámbitos que cubrimos</div>
+          {ambitos.map(a => (
+            <div className="categoria-ambito" key={a}>
+              <span className="categoria-ambito-dot" />
+              {a}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
@@ -633,40 +666,75 @@ function PasoReveal({ num, title, desc, delay }) {
   )
 }
 
-/* ── Acordeón SEIA interactivo ───────────────────── */
-function AccordionSEIA({ items }) {
-  const [openIdx, setOpenIdx] = useState(null)
-  const toggle = (i) => setOpenIdx(openIdx === i ? null : i)
+/* ── Cascada de Impacto — Visualización SEA ──────── */
+function CascadaImpacto({ items }) {
+  const [activeIdx, setActiveIdx] = useState(null)
+  const containerRef = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = containerRef.current; if (!el) return
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect() } },
+      { threshold: 0.15 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  /* Colores degradados — más intenso = más riesgo */
+  const COLORS = [
+    { bg: 'rgba(238,68,55,0.18)', border: 'rgba(238,68,55,0.6)', accent: '#EE4437' },
+    { bg: 'rgba(238,140,55,0.15)', border: 'rgba(238,140,55,0.5)', accent: '#EE8C37' },
+    { bg: 'rgba(238,190,55,0.12)', border: 'rgba(238,190,55,0.4)', accent: '#EEBE37' },
+    { bg: 'rgba(201,168,76,0.10)', border: 'rgba(201,168,76,0.35)', accent: '#C9A84C' },
+    { bg: 'rgba(160,168,100,0.08)', border: 'rgba(160,168,100,0.3)', accent: '#A0A864' },
+  ]
 
   return (
-    <div className="accordion-seia">
+    <div ref={containerRef} className="cascada-container">
       {items.map((item, i) => {
-        const isOpen = openIdx === i
+        const isActive = activeIdx === i
+        const color = COLORS[i] || COLORS[COLORS.length - 1]
+        const delay = i * 0.12
+
         return (
-          <div key={item.label} className={`accordion-item-seia ${isOpen ? 'open' : ''}`}>
-            <button className="accordion-header-seia" onClick={() => toggle(i)}>
-              <span className="accordion-rank-seia">{String(i + 1).padStart(2, '0')}</span>
-              <div className="accordion-header-center">
-                <span className="accordion-title-seia">{item.label}</span>
-                <div className="accordion-mini-bar">
-                  <div className="accordion-mini-fill" style={{ width: `${item.pct}%` }} />
+          <div
+            key={item.label}
+            className={`cascada-block ${visible ? 'visible' : ''} ${isActive ? 'active' : ''}`}
+            style={{
+              '--block-bg': color.bg,
+              '--block-border': color.border,
+              '--block-accent': color.accent,
+              transitionDelay: `${delay}s`,
+            }}
+            onClick={() => setActiveIdx(isActive ? null : i)}
+          >
+            <div className="cascada-block-header">
+              <div className="cascada-pct-visual">
+                <div className="cascada-pct-bar">
+                  <div
+                    className="cascada-pct-fill"
+                    style={{ width: visible ? `${item.pct}%` : '0%', transitionDelay: `${delay + 0.3}s` }}
+                  />
                 </div>
+                <CascadaCounter pct={item.pct} visible={visible} delay={delay} />
               </div>
-              <span className="accordion-pct-seia">{item.pct}%</span>
-              <span className={`accordion-chevron ${isOpen ? 'open' : ''}`}>
+              <div className="cascada-label">{item.label}</div>
+              <span className={`cascada-chevron ${isActive ? 'open' : ''}`}>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M2 5l5 5 5-5"/>
                 </svg>
               </span>
-            </button>
-            <div className="accordion-body-seia" style={{ maxHeight: isOpen ? '260px' : '0' }}>
-              <div className="accordion-inner">
-                <div className="accordion-problem">
-                  <span className="accordion-tag problem-tag">El problema</span>
+            </div>
+            <div className="cascada-detail" style={{ maxHeight: isActive ? '300px' : '0' }}>
+              <div className="cascada-detail-inner">
+                <div className="cascada-problem">
+                  <span className="cascada-tag problem-tag">El problema</span>
                   <p>{item.desc}</p>
                 </div>
-                <div className="accordion-solution">
-                  <span className="accordion-tag solution-tag">Cómo lo prevenimos</span>
+                <div className="cascada-solution">
+                  <span className="cascada-tag solution-tag">Cómo lo prevenimos</span>
                   <p>{item.solution}</p>
                 </div>
               </div>
@@ -678,63 +746,38 @@ function AccordionSEIA({ items }) {
   )
 }
 
-/* ── Barra animada SEIA (no usada en sección, se mantiene) ── */
-function BarReveal({ pct, label, desc, delay }) {
-  const ref = useRef(null)
-  const [visible, setVisible] = useState(false)
-  const [count, setCount]     = useState(0)
+/* ── Contador animado para la Cascada ────────────── */
+function CascadaCounter({ pct, visible, delay }) {
+  const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    const el = ref.current; if (!el) return
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect() } },
-      { threshold: 0.2 }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
-
-  /* Contador animado sincronizado con la barra */
   useEffect(() => {
     if (!visible) return
-    const DURATION = 1300
+    const DURATION = 1200
     const id = setTimeout(() => {
       const start = performance.now()
-      const tick  = (now) => {
-        const t      = Math.min((now - start) / DURATION, 1)
-        const eased  = 1 - Math.pow(1 - t, 3) // ease-out cubic
+      const tick = (now) => {
+        const t = Math.min((now - start) / DURATION, 1)
+        const eased = 1 - Math.pow(1 - t, 3)
         setCount(Math.round(eased * pct))
         if (t < 1) requestAnimationFrame(tick)
       }
       requestAnimationFrame(tick)
-    }, delay * 1000)
+    }, (delay + 0.3) * 1000)
     return () => clearTimeout(id)
   }, [visible, pct, delay])
 
-  return (
-    <div ref={ref} className={`seia-factor ${visible ? 'visible' : ''}`}>
-      <div className="seia-factor-header">
-        <span className="seia-factor-label">{label}</span>
-        <span className="seia-factor-pct">{count}%</span>
-      </div>
-      <div className="seia-bar-track">
-        <div
-          className="seia-bar-fill"
-          style={{ '--target-pct': `${pct}%`, transitionDelay: `${delay}s` }}
-        />
-      </div>
-      <p className="seia-factor-desc">{desc}</p>
-    </div>
-  )
+  return <span className="cascada-pct-num">{count}%</span>
 }
 
 /* ── Card de equipo ──────────────────────────────── */
-function TeamCard({ nombre, iniciales, email, delay }) {
+function TeamCard({ nombre, iniciales, titulo, desc, email, delay }) {
   const [ref, visible] = useRevealHook()
   return (
     <div ref={ref} className={`team-card ${visible ? 'visible' : ''}`} style={{ transitionDelay: `${delay}s` }}>
       <div className="team-avatar">{iniciales}</div>
       <div className="team-name">{nombre}</div>
+      <div className="team-titulo">{titulo}</div>
+      <p className="team-desc">{desc}</p>
       <a href={`mailto:${email}`} className="team-email">{email}</a>
     </div>
   )

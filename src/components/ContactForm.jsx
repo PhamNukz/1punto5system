@@ -9,16 +9,11 @@ const ACCESS_KEY = 'f5a4684b-f35a-411c-9156-ad723b4926f2'
 const TURNSTILE_SITE_KEY = '0x4AAAAAADWO2eBUOOPa3J6h'
 
 const SERVICIOS_OPCIONES = [
-  'Estudios de Impacto Ambiental (EIA / DIA)',
-  'Permisos Ambientales y Sectoriales',
-  'Integración Estratégica 360°',
-  'Sistemas de Gestión Ambiental',
-  'Monitoreo y Seguimiento RCA',
-  'Auditorías y Due Diligence Ambiental',
-  'Recursos Hídricos e Hidrología',
-  'Participación Ciudadana',
-  'Evaluación Ambiental Estratégica (EAE)',
-  'No sé por dónde empezar / Necesito orientación',
+  'Evaluación Ambiental (EIA / DIA / EAE)',
+  'Permisos y Cumplimiento (PAS / RCA)',
+  'Gestión Estratégica (SGA / Auditorías / PAC)',
+  'Recursos Hídricos',
+  'No sé por dónde empezar — necesito orientación',
 ]
 
 export default function ContactForm() {
