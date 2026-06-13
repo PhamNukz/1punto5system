@@ -521,14 +521,17 @@ export default function App() {
                       <li key={r}><IconCheck />{r}</li>
                     ))}
                   </ul>
+                  {/* TODO: Número de WhatsApp y estrategia de implementación pendientes.
+                      Reactivar cuando se defina el número real y la estrategia de atención.
                   <a
-                    href="https://wa.me/56900000000?text=Hola%2C%20me%20interesa%20una%20asesor%C3%ADa%20para%20mi%20proyecto.%20%C2%BFPueden%20orientarme%3F"
+                    href="https://wa.me/NUMERO_PENDIENTE?text=Hola%2C%20me%20interesa%20una%20asesor%C3%ADa%20para%20mi%20proyecto.%20%C2%BFPueden%20orientarme%3F"
                     className="btn-outline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <IconWhatsApp /> Escríbenos por WhatsApp
                   </a>
+                  */}
                 </div>
               </div>
 
@@ -551,8 +554,10 @@ export default function App() {
         </section>
 
         {/* ── Botón flotante WhatsApp ───────────────── */}
+        {/* TODO: Número de WhatsApp y estrategia de implementación pendientes.
+            Reactivar cuando se defina el número real y la estrategia de atención.
         <a
-          href="https://wa.me/56900000000?text=Hola%2C%20me%20interesa%20una%20asesor%C3%ADa%20para%20mi%20proyecto.%20%C2%BFPueden%20orientarme%3F"
+          href="https://wa.me/NUMERO_PENDIENTE?text=Hola%2C%20me%20interesa%20una%20asesor%C3%ADa%20para%20mi%20proyecto.%20%C2%BFPueden%20orientarme%3F"
           className="wsp-float"
           target="_blank"
           rel="noopener noreferrer"
@@ -560,6 +565,7 @@ export default function App() {
         >
           <IconWhatsApp />
         </a>
+        */}
 
         {/* ── Footer ───────────────────────────────── */}
         <footer className="footer">

@@ -1,0 +1,7 @@
+# robots.txt — 1.5 Consultores
+# https://www.1punto5.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.1punto5.com/sitemap.xml
