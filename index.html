@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>1.5 Consultores — Consultoría Ambiental Estratégica</title>
 
+    <!-- SEO: Indexación y Robots -->
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish" />
+
     <!-- SEO: Meta Description -->
     <meta name="description" content="Consultoría ambiental estratégica en Chile. Evaluación ambiental, permisos SEIA, gestión de RCA y coordinación de especialistas para proyectos de minería, energía e infraestructura. +20 años de experiencia.">
     <meta name="keywords" content="consultoría ambiental, gestión ambiental Chile, evaluación impacto ambiental, EIA, DIA, permisos ambientales, SEIA, RCA, SMA, recursos hídricos, participación ciudadana, permisos ambientales sectoriales, PAS">
@@ -20,8 +24,13 @@
     <meta property="og:url" content="https://www.1punto5.com">
     <meta property="og:locale" content="es_CL">
     <meta property="og:site_name" content="1.5 Consultores">
-    <!-- TODO: Agregar imagen OG de 1200x630px cuando esté lista -->
-    <!-- <meta property="og:image" content="https://www.1punto5.com/og-image.jpg"> -->
+
+    <!-- SEO: Imagen de Previsualización (Open Graph / Twitter) -->
+    <meta property="og:image" content="https://www.1punto5.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:image" content="https://www.1punto5.com/og-image.png">
 
     <!-- SEO: Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -76,6 +85,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Analytics: Google Analytics 4 (GA4) -->
+    <script>
+      (function() {
+        const gaId = "%VITE_GA_ID%";
+        // Cargar script dinámicamente si hay un ID configurado (evita errores en dev local)
+        if (gaId && gaId !== "%VITE_GA_ID%" && !gaId.startsWith("%")) {
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+          document.head.appendChild(script);
+
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', gaId, { 'anonymize_ip': true });
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

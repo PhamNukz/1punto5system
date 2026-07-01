@@ -180,6 +180,11 @@ const IconArrow = () => (
     <path d="M3 8h10M9 4l4 4-4 4"/>
   </svg>
 )
+const IconArrowDown = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M8 3v10M4 9l4 4 4-4"/>
+  </svg>
+)
 const IconCheck = () => (
   <svg className="check-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
     <circle cx="8" cy="8" r="6"/><path d="M5.5 8l2 2 3-3"/>
@@ -268,7 +273,10 @@ export default function App() {
 
         {/* ── Nav ──────────────────────────────────── */}
         <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
-          <a className="nav-logo" href="#">1.5 <span>Consultores</span></a>
+          <a className="nav-logo" href="#contacto" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <img src="/Logo1punto5.svg" alt="1.5c Logo" style={{ height: '36px' }} />
+            <span>Consultores</span>
+          </a>
           <div className="nav-links">
             <a href="#servicios">Asesoría</a>
             <a href="#equipo"   >Equipo</a>
@@ -303,9 +311,9 @@ export default function App() {
               </a>
             </div>
           </div>
-          <div className="hero-scroll">
-            <div className="scroll-line" /> Desplazar
-          </div>
+          <a href="#quienes" className="hero-scroll" style={{ textDecoration: 'none', cursor: 'pointer' }}>
+            <IconArrowDown /> Desplazar
+          </a>
           <div className="hero-stat-row">
             {[
               ['+20', 'Años de\nexperiencia'],
